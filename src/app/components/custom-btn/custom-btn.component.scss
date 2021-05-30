@@ -1,0 +1,19 @@
+.custom-btn {
+  display: flex;
+  width: 240px;
+  height: 60px;
+  border-radius: 15px;
+  cursor: pointer;
+  .btn-icon {
+    width: 60px;
+    background-position: center;
+    background-size: 50%;
+  }
+  .btn-text {
+    color: #FFFFFF;
+    width: calc(100% - 60px);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+}

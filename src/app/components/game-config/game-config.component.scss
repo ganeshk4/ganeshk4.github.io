@@ -1,0 +1,104 @@
+@import "~src/styles/colors";
+@import '~src/styles/mixin';
+.panel-white {
+  @include panel(#FFFFFF);
+  box-shadow: 0px 3px 10px #00000029;
+  z-index: 1;
+  padding: 30px;
+}
+
+.start-btn {
+  @include bg-blue-two;
+  @include alignToCenter;
+  border-radius: 12px;
+  color: $white;
+  margin-top: 15px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.setting {
+  border: 1px solid #70707026;
+  padding: 5px;
+  display: flex;
+  border-radius: 10px;
+  margin: 15px 0;
+  .setting-icon-border {
+    border: 10px solid #222;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    .setting-icon {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      background-size: 74%;
+      background-position: center;
+    }
+  }
+  .setting-desc {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 80px);
+    justify-content: space-around;
+    padding-left: 10px;
+    .info {
+      color: $dark-text;
+      opacity: 0.56;
+      margin-bottom: 10px;
+    }
+    .selection {
+      border-bottom: 1px solid $sub-text;
+
+      input {
+        outline: none;
+        width: 100%;
+        font-size: 18px;
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
+.setting-player1 {
+  background: $light-green-one;
+  .setting-icon-border {
+    border-color: $light-green-two;
+    .setting-icon {
+      background-image: url('/assets/images/avatar01.png');
+    }
+  }
+}
+
+  .setting-player2 {
+    background: $light-yellow-one;
+    .setting-icon-border {
+      border-color: $light-yellow-two;
+      .setting-icon {
+        background-image: url('/assets/images/avatar02.png');
+        background-size: 86%;
+      }
+    }
+  }
+
+  .setting-gamenumber, .setting-turn {
+    background: $light-skyblue-one;
+    .setting-icon-border {
+      border-color: $light-skyblue-two;
+      .setting-icon {
+        background-image: url('/assets/images/winner.png');
+        background-size: 65%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  .setting-turn {
+    .setting-icon-border {
+      .setting-icon {
+        background-image: url('/assets/images/run.png');
+        background-size: 65%;
+        background-repeat: no-repeat;
+      }
+    }
+  }

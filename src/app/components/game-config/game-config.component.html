@@ -1,0 +1,46 @@
+<div class="container">
+  <div [formGroup]="form" class='panel-white'>
+    <div class="setting setting-player1">
+      <div class="setting-icon-border">
+        <div class="setting-icon"></div>
+      </div>
+      <div class="setting-desc">
+        <div class="info">Player 01</div>
+        <div class="selection">
+          <input formControlName="firstPlayerName" type="text"/>
+        </div>
+      </div>
+    </div>
+    <div class="setting setting-player2">
+      <div class="setting-icon-border">
+        <div class="setting-icon"></div>
+      </div>
+      <div class="setting-desc">
+        <div class="info">Player 02</div>
+        <div class="selection">
+          <input formControlName="secondPlayerName" type="text"/>
+        </div>
+      </div>
+    </div>
+    <div (click)="openGameNumbersModal()" class="setting setting-gamenumber">
+      <div class="setting-icon-border">
+        <div class="setting-icon"></div>
+      </div>
+      <div class="setting-desc">
+        <div class="info">Number of Game</div>
+        <div class="selection">{{selectedNumberOfGames}}</div>
+      </div>
+    </div>
+    <div (click)="openTurnModal()" class="setting setting-turn">
+      <div class="setting-icon-border">
+        <div class="setting-icon"></div>
+      </div>
+      <div class="setting-desc">
+        <div class="info">Who starts</div>
+        <div class="selection">{{selectedwhoStarts}}</div>
+      </div>
+    </div>
+    <div class="separator"></div>
+    <div (click)="start()" class="start-btn">Start Game</div>
+  </div>
+</div>

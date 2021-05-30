@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~poppins-font';
+
+@import '_colors';
+@import '_mixin';
+
+html,
+body {
+    height: 100%;
+    font-family: Poppins;
+}
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100%;
+  @include alignToCenter;
+  background: #CED2DC 0% 0% no-repeat padding-box;
+}
+
+.one {
+  background: transparent url('/assets/images/one.png') no-repeat;
+}
+
+.two {
+  background: transparent url('/assets/images/two.png') no-repeat;
+}
+
+.online {
+  background: transparent url('/assets/images/online.png') no-repeat;
+}
+
+.training {
+  background: transparent url('/assets/images/training.png') no-repeat;
+}
+
+.separator {
+  margin-left: -10px;
+  margin-right: -10px;
+  border-bottom: 1px solid $sub-text;
+}

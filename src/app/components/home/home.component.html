@@ -1,0 +1,32 @@
+<div class="container">
+  <div class='design'>
+    <div class='panel-white'>
+      <div class="top-section">
+        <div class="game-title">
+          <div class="main-title">Connect Four!</div>
+          <div class="sub-title">Play with other players around the world.</div>
+        </div>
+        <div class="play-video">
+          <div class="video-icon">
+            <div class="play-icon"></div>
+            <div class="play-text">PLAY</div>
+          </div>
+        </div>
+        <div class="img"></div>
+      </div>
+      <div class="btn-container">
+        <div class="btn-row">
+          <app-custom-btn [text]="'Custom Game'" [bgClass]="'one'" ></app-custom-btn>
+          <app-custom-btn (click)="btnClick()" [text]="'Two Players'" [bgClass]="'two'" [colorClass]="'bg-blue-two'"></app-custom-btn>
+        </div>
+        <div class="btn-row">
+          <app-custom-btn [text]="'Game Online'" [bgClass]="'online'" [colorClass]="'bg-blue-three'"></app-custom-btn>
+          <app-custom-btn [text]="'Training Game'" [bgClass]="'training'" [colorClass]="'bg-purple-one'"></app-custom-btn>
+        </div>
+      </div>
+    </div>
+    <div class='panel-grey'>
+      <span>© 2020</span>
+    </div>
+  </div>
+</div>

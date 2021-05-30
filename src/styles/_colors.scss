@@ -1,0 +1,44 @@
+$light-blue-one: #4BABFF;
+$light-blue-two: #4B7BFF;
+$light-blue-three: #4B4BFF;
+$light-purple-one: #6E4BFF;
+$light-green-one: #DCF6E4;
+$light-green-two: #37AC5D;
+$dark-green:#278D48;
+$light-yellow-one: #F6EFD5;
+$light-yellow-two: #F8D146;
+$dark-yellow: #BB9A22;
+$light-skyblue-one: #EFF3FF;
+$light-skyblue-two: #B1C4F9;
+
+$orange: #FF7243;
+$white: #fff;
+
+$dark-text: #424242;
+$sub-text: #949494;
+
+@mixin bg-blue-one {
+  background-color: $light-blue-one;
+}
+@mixin bg-blue-two {
+  background-color: $light-blue-two;
+}
+@mixin bg-blue-three {
+  background-color: $light-blue-three;
+}
+@mixin bg-purple-one {
+  background-color: $light-purple-one;
+}
+
+.bg-blue-one {
+  @include bg-blue-one;
+}
+.bg-blue-two {
+  @include bg-blue-two;
+}
+.bg-blue-three {
+  @include bg-blue-three;
+}
+.bg-purple-one {
+  @include bg-purple-one;
+}

@@ -1,0 +1,13 @@
+<div class="modal-title">{{title}}</div>
+<div [formGroup]="form" class="options">
+  <mat-radio-group aria-label="Select an option" formControlName="selection">
+    <div *ngFor="let opt of options" class="option">
+      <mat-radio-button color="primary" [value]="opt.value">{{opt.label}}</mat-radio-button>
+    </div>
+  </mat-radio-group>
+</div>
+<div class="separator"></div>
+<div class="buttons">
+  <div (click)="cancel()" class="cancel">CANCEL</div>
+  <div (click)="okay()"class="ok">OK</div>
+</div>
