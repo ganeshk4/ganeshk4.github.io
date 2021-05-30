@@ -143,117 +143,118 @@ export class GameComponent implements OnInit {
     }
   }
 
-  private checkBottomFour(rowIndex: number, cellIndex: number): boolean {
-    let success = true;
-    for (let i = 1; i < checkInline; i++) {
-      if(rowIndex + i < this.cells.length
-        && this.cells[rowIndex + i][cellIndex] === this.turn) {
-          continue;
-      } else {
-        success = false;
-        break;
-      }
-    }
-    return success;
-  }
-
-  private checkRightFour(rowIndex: number, cellIndex: number): boolean {
-    let success = true;
-    for (let i = 1; i < checkInline; i++) {
-      if(cellIndex + i < this.cells.length
-        && this.cells[rowIndex][cellIndex + i] === this.turn) {
-          continue;
-      } else {
-        success = false;
-        break;
-      }
-    }
-    return success;
-  }
-
-  private checkLeftFour(rowIndex: number, cellIndex: number): boolean {
-    let success = true;
-    for (let i = 1; i < checkInline; i++) {
-      if(cellIndex - i > -1
-        && this.cells[rowIndex][cellIndex - i] === this.turn) {
-          continue;
-      } else {
-        success = false;
-        break;
-      }
-    }
-    return success;
-  }
-
-  private checkDiagonalFour(rowIndex: number, cellIndex: number): boolean {
-    let success = true;
-    // down-right 4
-    for (let i = 1; i < checkInline; i++) {
-      if(cellIndex + i < this.cells.length && rowIndex + i < this.cells.length
-        && this.cells[rowIndex + i][cellIndex + i] === this.turn) {
+  private checkVerticle(rowIndex: number, cellIndex: number): boolean {
+    let success = false;
+    let counter = 0;
+    let playerId = this.cells[rowIndex][cellIndex];
+    for (let i = 0; i < this.cells.length; i++) {
+      if (playerId === this.cells[i][cellIndex]) {
+        counter++;
+        if (counter > 3) {
           success = true;
-          continue;
+          break;
+        }
       } else {
-        success = false;
-        break;
+        counter = 0;
       }
     }
+    return success;
+  }
 
-    // top-left 4
-    if (!success) {
-      success = true;
-      for (let i = 1; i < checkInline; i++) {
-        if(cellIndex - i > -1 && rowIndex - i > -1
-          && this.cells[rowIndex - i][cellIndex - i] === this.turn) {
-            continue;
-        } else {
-          success = false;
+  private checkHorizontal(rowIndex: number, cellIndex: number): boolean {
+    let success = false;
+    let counter = 0;
+    let playerId = this.cells[rowIndex][cellIndex];
+    for (let i = 0; i < this.cells.length; i++) {
+      if (playerId === this.cells[rowIndex][i]) {
+        counter++;
+        if (counter > 3) {
+          success = true;
           break;
         }
+      } else {
+        counter = 0;
       }
     }
+    return success;
+  }
 
-    //down-left
-    if (!success) {
-      success = true;
-      for (let i = 1; i < checkInline; i++) {
-        if(cellIndex - i > -1 && rowIndex + i < this.cells.length
-          && this.cells[rowIndex + i][cellIndex - i] === this.turn) {
-            continue;
-        } else {
-          success = false;
-          break;
-        }
-      }
+  // check diagonal \
+  private checkFirstDiagonal(rowIndex: number, cellIndex: number): boolean {
+    let success = false;
+    let counter = 0;
+    const playerId = this.cells[rowIndex][cellIndex];
+    let startRowIndex = rowIndex;
+    let startCellIndex = cellIndex;
+    while (!(startRowIndex === 0 || startCellIndex === 0)) {
+      startRowIndex--;
+      startCellIndex--;
     }
 
-    //top-right
-    if (!success) {
-      success = true;
-      for (let i = 1; i < checkInline; i++) {
-        if(cellIndex + i < this.cells.length && rowIndex - i > -1
-          && this.cells[rowIndex - i][cellIndex + i] === this.turn) {
-            continue;
-        } else {
-          success = false;
+    while (!(startRowIndex === this.cells.length || startCellIndex === this.cells.length)) {
+      if (playerId === this.cells[startRowIndex][startCellIndex]) {
+        counter++;
+        if (counter > 3) {
+          success = true;
           break;
         }
+      } else {
+        counter = 0;
       }
+      startRowIndex++;
+      startCellIndex++;
+    }
+
+    return success;
+  }
+
+  // check diagonal /
+  private checkOtherDiagonal(rowIndex: number, cellIndex: number): boolean {
+    let success = false;
+    let counter = 0;
+    const playerId = this.cells[rowIndex][cellIndex];
+    let startRowIndex = rowIndex;
+    let startCellIndex = cellIndex;
+    while (!(startRowIndex === 0 || startCellIndex === this.cells.length - 1)) {
+      startRowIndex--;
+      startCellIndex++;
+    }
+
+    while (!(startRowIndex === this.cells.length || startCellIndex === 0)) {
+      if (playerId === this.cells[startRowIndex][startCellIndex]) {
+        counter++;
+        if (counter > 3) {
+          success = true;
+          break;
+        }
+      } else {
+        counter = 0;
+      }
+      startRowIndex++;
+      startCellIndex--;
+    }
+
+    return success;
+  }
+
+  private checkDiagonals(rowIndex: number, cellIndex: number): boolean {
+    // first-daigonal
+    let success = false;
+    success = this.checkFirstDiagonal(rowIndex, cellIndex);
+    if (!success) {
+      success = this.checkOtherDiagonal(rowIndex, cellIndex);
     }
     return success;
   }
 
   private checkWin(rowIndex: number, cellIndex: number): boolean {
     let success;
-    success = this.checkBottomFour(rowIndex, cellIndex);
+    success = this.checkVerticle(rowIndex, cellIndex);
     if (!success) {
-      success = this.checkRightFour(rowIndex, cellIndex);
+      success = this.checkHorizontal(rowIndex, cellIndex);
     }
     if (!success) {
-      success = this.checkLeftFour(rowIndex, cellIndex);
-    }
-    if (!success) {
-      success = this.checkDiagonalFour(rowIndex, cellIndex);
+      success = this.checkDiagonals(rowIndex, cellIndex);
     }
     if (!success) {
       this.switchTurn();

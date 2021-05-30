@@ -11,6 +11,7 @@
 .panel-grey {
   @include panel(#EEEEEE);
   display: flex;
+  display: none;
   align-items: flex-end;
   padding: 35px;
   margin-top: -75px;
