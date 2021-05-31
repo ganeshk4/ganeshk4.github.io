@@ -28,6 +28,7 @@
 }
 .meta {
   width: 400px;
+  margin: 20px;
 }
 .player {
   border: 1px solid #70707026;
@@ -147,6 +148,7 @@
    color: #424242;
    font-size: 24px;
    margin-top: 10px;
+   text-align: center;
   }
   .round-title {
     @include alignToCenter;
@@ -182,5 +184,27 @@
     .congrats-text {
       font-size: 28px;
       color: #FF6600;
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .panel-white {
+      width: 100%;
+    }
+    .player .desc {
+      .p-info {
+        font-size: 14px;
+      }
+      .name {
+        font-size: 16px;
+      }
+    }
+    .score {
+      .text {
+        font-size: 14px;
+      }
+      .total {
+        font-size: 16px;
+      }
     }
   }
